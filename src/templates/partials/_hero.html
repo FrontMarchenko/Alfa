@@ -1,0 +1,82 @@
+<section class="hero">
+  <div class="hero__logo fadeIn zoomIn">
+    <div id="object">
+        <img src="../../img/Hero-logo.png" alt="" class="img-fluid"/>
+    </div>
+    <div class="hero__main">
+        <div class="hero__btn">
+            hover me
+          </div>
+          <div class="hero__effect"></div> 
+    </div>
+    
+  </div>
+  <div class="hero__heading">
+    <h3 class="title fadeIn">
+      Вітаємо вас<br/>
+      у лабораторії майбутнього
+    </h3>
+    <h1 class="title title--h1 fadeIn">FUTURE LAB<span>e</span></h1>
+  </div>
+  <div class="hero__feature">
+      <span class="triangle">
+      <a href="#"><img src="../../img/triangles.png" alt=""/></a>  
+      </span>
+  </div>
+  <div class="hero__description">
+    <div class="container container--hero">
+      <div class="description-wrapper fadeIn">
+          <p>Ми постійно плануємо своє майбутнє. Будуємо плани та затверджуємо нові стратегії. <br/>
+              Ми намагаємось бути завжди на крок попереду, щоб кожний клієнт Альфа-Банку, щодня, отримував найкраще. </p>
+              
+             <p>Саме тому, цього року, ми вирішили присвятити наш корпоративний календар – майбутньому. </p> 
+              
+            <p>Кожний сюжет, ми побудували навколо банківських продуктів і сервісів, які бажаємо бачити поряд з собою <br/> навіть через 50 років, а головними героями кожної історії, як завжди, були наші співробітники. </p>  
+              
+            <p>Ми уявили, що може змінитися і зрозуміли, що які б зміни на нас не чекали, з такою командою,<br/>
+                усі вони – на краще. </p>  
+              
+            <p>До зустрічі у майбутньому, друзі.</p>  
+      </div> 
+      <div class="descr__ind is-left">
+        {% include "partials/_progress.html" %}
+      </div>
+      <div class="descr__ind is-right">
+        {% include "partials/_progress.html" %}
+      </div>
+  
+      </div>
+    </div>
+</section>
+
+{%set
+  months = [
+    { img: 'Jan.png', title: 'Сiчень', popupTarget: 'calendar', index: '0' },
+    { img: 'Feb.png', title: 'ЛЮТИЙ', popupTarget: 'calendar', index: '1' },
+    { img: 'Mar.png', title: 'БЕРЕЗЕНЬ', popupTarget: 'calendar', index: '2' },
+    { img: 'Apr.png', title: 'КВIТЕНЬ', popupTarget: 'calendar', index: '3' },
+    { img: 'May.png', title: 'ТРАВЕНЬ', popupTarget: 'calendar', index: '4' },
+    { img: 'Jun.png', title: 'ЧЕРВЕНЬ', popupTarget: 'calendar', index: '5' },
+    { img: 'Jul.png', title: 'ЛИПЕНЬ', popupTarget: 'calendar', index: '6' },
+    { img: 'Aug.png', title: 'СЕРПЕНЬ', popupTarget: 'calendar', index: '7' },
+    { img: 'Sep.png', title: 'ВЕРЕСЕНЬ', popupTarget: 'calendar', index: '8' },
+    { img: 'Oct.png', title: 'ЖОВТЕНЬ', popupTarget: 'calendar', index: '9' },
+    { img: 'Nov.png', title: 'ЛИСТОПАД', popupTarget: 'calendar', index: '10' },
+    { img: 'Dec.png', title: 'ГРУДЕНЬ', popupTarget: 'calendar', index: '11' }
+  ]
+  %}
+  
+  <!-- begin months -->
+  <section class="months">
+    <div class="container container--months">
+        {% for i in months %}
+        {{ mixins.month(
+          img = i.img,
+          title = i.title,
+          popupTarget = i.popupTarget,
+          index = i.index
+        ) }}
+        {% endfor %}
+    </div>
+    
+  </section>

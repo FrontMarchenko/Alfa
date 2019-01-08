@@ -1,0 +1,672 @@
+// body
+// 	background: #FFF
+// 	+css-lock(16, 50, 600, 1000)
+// 	line-height: 1.4
+.out
+	overflow: hidden
+body
+	background-image: url('../img/bg.jpg')
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: 50% 0%
+	font-size: 16px
+	color: #58595b
+	+MRegular
+
+.header
+	box-shadow: 2px 3px 31px rgba(0, 234, 255, 0.19)
+	background-color: rgba(241,250,255,.6)
+	&__inner
+		display: flex
+		min-height: 112px
+		align-items: center
+	&__logo
+		display: inline-flex
+	&__logos
+		max-width: 580px
+		width: 100%
+		display: flex
+		justify-content: space-between
+	&__year
+		margin-left: auto
+.img-fluid
+	max-width: 100%
+	height: auto
+//hero
+.hero
+	text-align: center
+	&__heading
+		.title
+			margin-bottom: 30px
+		.title--h1
+			margin-bottom: 8px
+	&__logo
+		padding-top: 28px
+		margin: 0 auto 41px
+		text-align: center
+		max-width: 567px
+		width: 100%
+		height: auto
+		position: relative
+		left: 9px
+.triangle
+	animation: MoveUpDown 1.5s linear infinite
+	display: inline-flex
+	position: relative
+	top: 0
+	right: 0
+	margin-bottom: 45px
+@keyframes MoveUpDown 
+	0%, 100%
+		top: 0
+	50%
+		top: 50px
+.circle-progress
+	position: absolute
+	bottom: 50%
+	transform: translate(0%, 50%)
+	&--left
+		left: 0
+	&--right
+		right: 0
+	svg
+		font-size: 66px
+		fill: #53C4EF
+#object
+	transition: 4s rotate linear
+.hero
+	&__main
+		width: 200px
+		height: 70px
+		position: absolute
+		top: 100%
+		left: 50%
+		perspective: 800px
+		transform: translate(-50%,-50%)
+		cursor: pointer
+	&__btn
+		width: 100%
+		height: 100%
+		display: block
+		background-color: #3f0063
+		font-family: fantasy
+		font-size: 32px
+		color: #04c5D6
+		text-align: center
+		line-height: 70px
+		text-shadow: 0 5px 10px rgba(0,0,0,.2)
+		box-shadow: 0 15px 30px rgba(59,2,97,.4);
+		transition: all .5s
+		cursor: pointer
+	&__effect
+		width: 100%
+		height: 30px
+		background-color: #3b0261
+		position: absolute
+		top: 79%
+		left: 0
+		transform: rotateX(-87deg)
+		transition: all .5s
+	&__main:hover .hero__btn
+		color: #52dee7
+		background-color: #4a0472
+		transform: rotateX(25deg)
+		text-shadow:  0 10px 10px rgba(0,0,0,.2)
+		box-shadow: 0 25px 30px rgba(59,2,97,.4);
+	&__main:hover .hero__effect
+		transform: rotateX(-70deg)
+// 	&__inside
+// 		position: absolute
+// 		top: 2px
+// 		left: -2px
+// 		display: flex
+// 		flex-direction: column
+// 		align-items: center
+// 		justify-content: center
+// .progress-bar
+// 	position: absolute
+// #circle-js
+// 	stroke-dasharray: 296 296
+// 	stroke-dashoffset: 296
+// 	animation: grow 5s ease-out infinite
+// @keyframes grow
+// 	100%
+// 		stroke-dashoffset: 0
+$circle-size: 50px
+$circle-background: transparent
+$circle-color: #d9ecf3
+$inset-size: 38px
+$inset-color: #d9ecf3
+$transition-length: 1s
+
+.progress
+	&__nmb
+		font-size: 10px
+		display: inline-block
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		z-index: 1
+		color: #54c4ef
+
+.ko-progress-circle
+	position: absolute
+	top: 50%
+	left: 50%
+	width: $circle-size
+	height: $circle-size
+	transform: translate(-50%, -50%) rotate(180deg)
+	background-color: $circle-background
+	border-radius: 50%
+	.ko-progress-circle__slice, .ko-progress-circle__fill
+		width: $circle-size
+		height: $circle-size
+		position: absolute
+		-webkit-backface-visibility: hidden
+		// transition: transform $transition-length;
+		border-radius: 50%
+	.ko-progress-circle__slice
+		clip: rect(0px, $circle-size, $circle-size, $circle-size / 2)
+		.ko-progress-circle__fill
+			clip: rect(0px, $circle-size / 2, $circle-size, 0px)
+			background-color: $circle-color
+	.ko-progress-circle__overlay
+		width: $inset-size
+		height: $inset-size
+		position: absolute
+		margin-left: ($circle-size - $inset-size) / 2
+		margin-top: ($circle-size - $inset-size) / 2
+		background-color: $inset-color
+		border-radius: 50%
+	$i: 0
+	$increment: 180deg / 100
+	@while $i <= 100
+		&[data-progress='#{$i}']
+			.ko-progress-circle__slice.full, .ko-progress-circle__fill
+				transform: rotate(-$increment * $i)
+			.ko-progress-circle__fill.ko-progress-circle__bar
+				transform: rotate(-$increment * $i * 2)
+			$i: $i + 1
+
+.descr
+	text-align: center
+	font-size: 18px
+	letter-spacing: .03em
+	color: $c-text
+	padding: 35px 55px
+	position: relative
+	border: 3px solid  #d9ebf5
+	border-image: url('../img/border2.png') 3  
+	p
+		&:not(:last-child)
+			margin-bottom: 18px
+	+xl
+		font-size: 16px
+	+lg
+		padding: 25px 35px
+	+md
+		padding: 20px 25px
+		br
+			display: none
+	+sm
+		font-size: 14px
+		padding: 20px
+	&__wrap
+		position: relative
+		padding-left: 100px
+		padding-right: 100px
+		+cont(1442)
+		+lg
+			padding-left: 70px
+			padding-right: 70px
+		+xs
+			padding-left: 0
+			padding-right: 0
+	&__ind
+		position: absolute
+		top: 50%
+		transform: translate(0, -50%)
+		display: inline-block
+		font-size: 0
+		+xs
+			display: none
+		&.is-left
+			left: 0
+		&.is-right
+			right: 0
+	&__top-left,
+	&__top-right,
+	&__bottom-left,
+	&__bottom-right
+		display: inline-block
+		width: 37px
+		height: 37px
+		position: absolute
+		.ic
+			+vcenter
+			transition: visibility .5s, opacity .5s
+		.ic-corner-a
+			visibility: hidden
+			opacity: 0
+		&.is-active
+			.ic-corner-a
+				visibility: visible
+				opacity: 1
+	&__top-left
+		top: -13px
+		left: -11px
+	&__top-right
+		+rotate(90)
+		top: -13px
+		right: -11px
+	&__bottom-left
+		+rotate(-90)
+		bottom: -13px
+		left: -11px
+	&__bottom-right
+		+rotate(180)
+		bottom: -13px
+		right: -11px
+
+.descr-section
+	padding-left: 20px
+	padding-right: 20px
+	+md
+		padding-bottom: 30px
+
+//common
+.container
+	max-width: 1266px
+	width: 100%
+	margin: 0 auto
+	padding: 0 10px
+	&--lg
+		max-width: 1920px
+		width: 100%
+		padding-left: 150px
+		padding-right: 30px
+	&--months
+		position: relative
+		height: 3400px
+		top: 125px
+	&--hero
+		max-width: 1455px
+		width: 100%
+		padding-left: 100px
+		padding-right: 100px
+		position: relative
+.title
+	font-size: 45px
+	text-transform: uppercase
+	color: #839ca6
+	letter-spacing: 1.85px
+	+MBold
+	&--h1
+		color: #e41e13
+		font-size: 74px
+		
+		span
+			text-transform: none
+	&--months
+		letter-spacing: 2.47px
+		transition: color .5s
+//comon
+.description-wrapper
+	position: relative
+	border: 3px solid #99daf4
+	border-image: url('../img/border.png') 3
+	padding: 22px 35px
+	+MRegular
+	color: #839ca6
+	font-size: 18px
+	font-weight: 900
+	p:not(:last-child)
+		margin-bottom: 30px
+		
+//month
+.months
+	height: 3525px
+	// position: relative
+.month
+	display: inline-block
+	text-align: center
+	position: absolute
+	max-width: 570px
+	width: 100%
+	transition: transform .3s
+	text-decoration: none
+	&:hover
+		transform: scale(1.1)
+	&:nth-child(1)
+		top: 0.2%
+		left: -7.3%
+		& .month__img
+			background-position: 57% 0%
+		& .month__title
+			left: -54px
+	&:nth-child(2)
+		top: 3.3%
+		right: -14%
+		& .month__img
+			background-position: 38% 36%
+			height: 335px
+		& .month__title
+			left: -28px
+	&:nth-child(3)
+		top: 14.5%
+		left: 26%
+		& .month__img
+			background-position: 48% 17%
+			height: 347px
+		& .month__title
+			left: -17px
+	&:nth-child(4)
+		top: 25.4%
+		left: -11%
+		& .month__img
+			background-position: 50% 32%
+			height: 338px
+		& .month__title
+			left: 6px
+	&:nth-child(5)
+		top: 27%
+		right: -9%
+		& .month__img
+			background-position: 73% 0%
+			height: 332px
+		& .month__title
+			left: -2px
+	&:nth-child(6)
+		top: 38%
+		right: 27.9%
+		& .month__img
+			background-position: 73% 0%
+			height: 396px
+		& .month__title
+			left: -2px
+	&:nth-child(7)
+		top: 47%
+		left: -11.6%
+		& .month__img
+			background-position: 54% 0%
+			height: 389px
+		& .month__title
+			left: 14px
+	&:nth-child(8)
+		top: 51.7%
+		right: -11%
+		& .month__img
+			background-position: 23% 2%
+			height: 367px
+		& .month__title
+			left: 14px
+	&:nth-child(9)
+		top: 63%
+		right: 26.7%
+		& .month__img
+			background-position: 0% 42%
+			height: 360px
+		& .month__title
+			left: -38px
+	&:nth-child(10)
+		top: 73%
+		left: -12%
+		& .month__img
+			background-position: 50% 0%
+			height: 434px
+		& .month__title
+			left: -12px
+	&:nth-child(11)
+		top: 70.7%
+		right: -17%
+		& .month__img
+			background-position: 50% 100%
+			height: 423px
+		& .month__title
+			left: -64px
+	&:nth-child(12)
+		bottom: 0%
+		right: 24.5%
+		& .month__img
+			background-position: -10% 10%
+			height: 354px
+		& .month__title
+			left: -34px
+	&__img
+		background-position: 50% 0
+		background-size: auto
+		background-repeat: no-repeat
+		height: 340px
+
+	&__title
+		max-width: 401px
+		width: 100%
+		height: 108px
+		padding: 25px 20px
+		box-shadow: 10px 16px 32px rgba(138, 172, 189, 0.34)
+		background-color: rgba(241,250,255,.6)
+		position: relative
+		display: inline-block
+	&:hover .title--months
+		color: #e41e13
+//footer
+.footer
+	padding-top: 75px
+	padding-bottom: 26px
+	&__year
+		position: relative
+		margin-bottom: 26px
+		left: -63px
+		text-align: center
+		font-size: 195px
+		letter-spacing: -4.9px
+		color: #ddeef6
+		+MThin
+		span
+			padding: 10px
+	&__features
+		display: flex
+		align-items: center
+		justify-content: space-between
+	&__logos
+		max-width: 420px
+		width: 100%
+		display: flex
+		justify-content: space-between
+		align-items: center
+	&__description h3
+		font-size: 19px
+		+MLight
+		color: #fff
+		letter-spacing: 0.02px
+//common
+
+
+*
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+	-moz-tap-highlight-color: rgba(0, 0, 0, 0)
+
+a
+	text-decoration: none
+	color: inherit
+
+i
+	font-style: normal
+
+strong
+	font-weight: inherit
+
+small
+	font-size: inherit
+
+body  
+	+image('bg.jpg')
+	+cover
+	background-color: #a5c6d9
+	line-height: 1.3
+	font-size: 16px
+	color: $c-gray
+	+MRegular
+	+no-scroll
+
+.out
+	overflow: hidden
+
+.logo
+	display: inline-block
+	font-size: 0
+	img
+		max-width: 100%
+
+h1, .h1
+	font-size: 80px
+	color: $c-red
+	+MBold
+	text-transform: uppercase
+	line-height: 1.2
+	i
+		text-transform: none
+	+lg
+		font-size: 70px
+	+md
+		font-size: 62px
+	+sm
+		font-size: 55px
+		line-height: 1
+	+xs
+		font-size: 50px
+
+h2, .h2
+	font-size: 50px
+	+MBold
+	color: $c-text
+	text-transform: uppercase
+	line-height: 1.2
+	+lg
+		font-size: 42px
+	+md
+		font-size: 38px
+	+sm
+		font-size: 35px
+	+xs
+		font-size: 32px
+
+h3, .h3
+	font-size: 25px
+	+MBold
+	color: $c-text
+	text-transform: uppercase
+	line-height: 1.5
+	+lg
+		font-size: 20px
+
+	&_comb
+		i
+			color: $c-red
+
+.year
+	+MThin
+	font-size: 180px
+	line-height: 1
+	color: #ddeef6
+	padding: 30px 70px 10px
+	display: inline-block
+	position: relative
+
+	&:hover .year__top-left
+		transform: translate(30px, 30px) rotate(90deg)
+		+md
+			transform: translate(20px, 20px) rotate(90deg)
+	&:hover .year__top-right
+		transform: translate(-30px, 30px) rotate(180deg)
+		+md
+			transform: translate(-20px, 20px) rotate(180deg)
+	&:hover .year__bottom-left
+		transform: translate(30px, -30px) rotate(0deg)
+		+md
+			transform: translate(20px, -20px) rotate(0deg)
+	&:hover .year__bottom-right
+		transform: translate(-30px, -30px) rotate(-90deg)
+		+md
+			transform: translate(-20px, -20px) rotate(-90deg)
+		+lg
+		font-size: 150px
+	+md
+		font-size: 130px
+		padding: 20px 50px 10px
+	+sm
+		font-size: 100px
+	+xs
+		font-size: 75px
+	&__top-left,
+	&__top-right,
+	&__bottom-left,
+	&__bottom-right
+		position: absolute
+		display: inline-block
+		transition: transform .2s
+		+sm
+			width: 18px
+			height: 18px
+			border-width: 3px
+	&__top-left
+		+icon-arrow(23, 23, 4, #ddeef6, 90)
+		top: 0
+		left: 0
+	&__top-right
+		+icon-arrow(23, 23, 4, #ddeef6, 180)
+		top: 0
+		right: 0
+	&__bottom-left
+		+icon-arrow(23, 23, 4, #ddeef6, 0)
+		bottom: 0
+		left: 0
+	&__bottom-right
+		+icon-arrow(23, 23, 4, #ddeef6, -90)
+		bottom: 0
+		right: 0
+
+.fadeIn
+	opacity: 0
+	transition-property: opacity
+	&.is-animated
+		opacity: 1
+		transition-duration: 3s
+.zoomIn
+	+scale(0)
+	opacity: 0
+	transition-property: opacity, transform
+	&.is-animated
+		+scale(1)
+		opacity: 1
+		transition-duration: 3s
+.top
+	background-color: rgba(#ddeef6, .6)
+	border-radius: 10em
+	bottom: 80px
+	height: 50px
+	position: fixed
+	right: 30px
+	transition: transform 0.25s ease 0s
+	width: 50px
+	z-index: 10
+	text-align: center
+	transform: translate(200%, 0)
+	transition: background-color .2s
+	+hover
+		background-color: #ddeef6
+	+lg
+		bottom: 60px
+	+sm
+		right: 20px
+	&::before
+		content: ''
+		display: inline-block
+		+icon-arrow(15, 15, 2, $c-text, 135)
+		position: absolute
+		left: 50%
+		top: 1.3em
+		transform: translate(-50%, 0) rotate(135deg)
+	&.is-active
+		transform: translate(0, 0)

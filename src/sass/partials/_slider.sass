@@ -1,0 +1,111 @@
+.slider
+  +cont(996)
+  &.no-animation
+    .slick-track
+      transition: 0s !important
+  &__wrap
+    position: relative
+    +sm
+      padding-top: 40px
+  &__prev,
+  &__next
+    position: absolute
+    top: 23%
+    .icon-arrow-sm
+      display: none
+    +xl
+      top: 35%
+      .icon-arrow
+        display: none
+      .icon-arrow-sm
+        display: inline-block
+    +r(800)
+      top: 28%
+    +sm
+      display: none !important
+  &__prev
+    left: 5%
+    +xl
+      left: 2%
+  &__next
+    right: 5%
+    transform: rotate(180deg)
+    +xl
+      right: 2%
+  &__dots
+    position: absolute
+    top: 0
+    text-align: center
+    left: 0
+    width: 100%
+    z-index: 1
+    li
+      display: inline-block
+      margin-left: 3px
+      margin-right: 3px
+      &.slick-active
+        button
+          background-color: $c-gray
+    button
+      +hidetext
+      width: 10px
+      height: 10px
+      background-color: $c-text
+      display: inline-block
+      border-radius: 50%
+
+.slide 
+  &__img
+    +cover
+    padding-top: 70%
+    background-position: 50% 20%
+  &__content
+    +clr
+    padding-top: 30px
+  &__left
+    float: left
+    width: percentage(419/996)
+    padding-right: 15px
+    margin-top: -3.8em
+    position: relative
+    padding-top: 20px
+    +sm
+      float: none
+      width: 100%
+    &::before,
+    &::after
+      position: absolute
+      content: ''
+      z-index: 0
+    &::before
+      top: 0
+      left: -1px
+      background-color: #f1faff
+      width: 204px
+      height: 33px
+    &::after
+      top: 0
+      left: 203px
+      +arr(33, 33, #f1faff, bl)
+  &__right
+    float: right
+    width: percentage(577/996)
+    +sm
+      float: none
+      width: 100%
+  &__title
+    margin-bottom: 10px
+    position: relative
+    z-index: 1
+  &__text
+    +MMedium
+    font-size: 14px
+    letter-spacing: .04em
+    line-height: 1.5
+  &__name
+    font-size: 12px
+    position: relative
+    z-index: 1
+    margin-bottom: 12px
+    strong
+      +MBold 

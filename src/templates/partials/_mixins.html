@@ -1,0 +1,16 @@
+{% macro icon(i) %}
+<svg class="icon icon-{{i}}"><use xlink:href="img/sprite.svg#icon-{{i}}"></use></svg>
+{% endmacro %}
+
+{% macro month(img, title, popupTarget, index) %}
+<!-- begin month -->
+<a href="#" class="month js-popup-open" data-index="{{index}}" data-popup-target="{{popupTarget}}">
+  <div class="month__img" style="background-image: url('img/{{img}}')">
+    {# <img src="img/{{img}}" alt=""> #}
+  </div>
+  <div class="month__title">
+    <h2 class="title title--months">{{title}}</h2>
+  </div>
+</a>
+<!-- end month -->
+{% endmacro %}
